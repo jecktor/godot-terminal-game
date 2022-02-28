@@ -169,7 +169,7 @@ func _on_Display_gui_input(_event: InputEvent):
 
 
 func _on_Display_edit_gui_input(event: InputEvent):
-	if event is InputEventKey && event.pressed:
+	if event is InputEventKey && event.pressed && !is_process_running:
 		if event.control:
 			
 			## Handle exit.
