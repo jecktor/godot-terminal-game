@@ -1,0 +1,15 @@
+{
+  "children": [
+    {
+      "children": [
+        {
+          "content": "Welcome to the Terminal!\n\nThis program imitates the behavior of a unix command line interface.\n\nYou can perform actions over the directory tree, such as creating new directories and files,\nrenaming them, moving them, deleting them from the tree, and more.\n\nTo do so, you'll need to execute commands (Type help to print a list of all available shell commands.)\nIf you're not familiar with the unix CLI, the \"man\" command will be your best friend.\n\nBe aware that this program isn't a 1:1 unix CLI clone, hence many features that you'd normally\nsee in a real unix CLI won't be available (pipes, wildcards, package managers, etc.)\n\nHappy Hacking!",
+          "extension": "txt",
+          "name": "welcome"
+        }
+      ],
+      "name": "home"
+    }
+  ],
+  "name": "/"
+}

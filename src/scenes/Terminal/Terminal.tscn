@@ -1,0 +1,143 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://src/scenes/Terminal/Terminal.gd" type="Script" id=1]
+[ext_resource path="res://src/scenes/Terminal/TerminalCommands.gd" type="Script" id=2]
+[ext_resource path="res://src/tres/fonts/console.tres" type="DynamicFont" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=14]
+
+[sub_resource type="StyleBoxEmpty" id=15]
+
+[sub_resource type="StyleBoxEmpty" id=16]
+
+[sub_resource type="StyleBoxEmpty" id=17]
+
+[sub_resource type="StyleBoxEmpty" id=18]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[sub_resource type="StyleBoxEmpty" id=12]
+
+[sub_resource type="StyleBoxEmpty" id=13]
+
+[sub_resource type="Theme" id=8]
+HScrollBar/icons/decrement = null
+HScrollBar/icons/decrement_highlight = null
+HScrollBar/icons/increment = null
+HScrollBar/icons/increment_highlight = null
+HScrollBar/styles/grabber = SubResource( 14 )
+HScrollBar/styles/grabber_highlight = SubResource( 15 )
+HScrollBar/styles/grabber_pressed = SubResource( 16 )
+HScrollBar/styles/scroll = SubResource( 17 )
+HScrollBar/styles/scroll_focus = SubResource( 18 )
+Label/fonts/font = ExtResource( 3 )
+LineEdit/colors/font_color_uneditable = Color( 1, 1, 1, 1 )
+LineEdit/fonts/font = ExtResource( 3 )
+LineEdit/styles/focus = SubResource( 1 )
+LineEdit/styles/normal = SubResource( 2 )
+LineEdit/styles/read_only = SubResource( 3 )
+TextEdit/colors/font_color_readonly = Color( 1, 1, 1, 1 )
+TextEdit/fonts/font = ExtResource( 3 )
+TextEdit/styles/completion = SubResource( 4 )
+TextEdit/styles/focus = SubResource( 5 )
+TextEdit/styles/normal = SubResource( 6 )
+TextEdit/styles/read_only = SubResource( 7 )
+VScrollBar/icons/decrement = null
+VScrollBar/icons/decrement_highlight = null
+VScrollBar/icons/increment = null
+VScrollBar/icons/increment_highlight = null
+VScrollBar/styles/grabber = SubResource( 9 )
+VScrollBar/styles/grabber_highlight = SubResource( 10 )
+VScrollBar/styles/grabber_pressed = SubResource( 11 )
+VScrollBar/styles/scroll = SubResource( 12 )
+VScrollBar/styles/scroll_focus = SubResource( 13 )
+
+[node name="Terminal" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 8 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Display" type="TextEdit" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.941
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -0.279968
+mouse_default_cursor_shape = 0
+readonly = true
+context_menu_enabled = false
+smooth_scrolling = true
+wrap_enabled = true
+caret_block_mode = true
+caret_blink = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Wrapper" type="HBoxContainer" parent="."]
+anchor_top = 0.941
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = -0.279968
+margin_right = -16.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Prompt" type="Label" parent="Wrapper"]
+margin_top = 20.0
+margin_bottom = 43.0
+
+[node name="Input" type="LineEdit" parent="Wrapper"]
+margin_left = 4.0
+margin_right = 136.0
+margin_bottom = 64.0
+mouse_default_cursor_shape = 0
+max_length = 100
+expand_to_text_length = true
+context_menu_enabled = false
+placeholder_alpha = 1.0
+caret_blink = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TerminalCommands" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[connection signal="gui_input" from="Display" to="." method="_on_Display_gui_input"]
+[connection signal="gui_input" from="Wrapper/Input" to="." method="_on_Input_gui_input"]
+[connection signal="text_entered" from="Wrapper/Input" to="." method="_on_Input_text_entered"]
+[connection signal="exception_occurred" from="TerminalCommands" to="." method="_on_exception_occurred"]

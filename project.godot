@@ -1,0 +1,64 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "TerminalObject",
+"class": "DirectoryObject",
+"language": "GDScript",
+"path": "res://src/scenes/Terminal/DirectoryTree/DirectoryObject.gd"
+}, {
+"base": "Reference",
+"class": "DirectoryObjectTree",
+"language": "GDScript",
+"path": "res://src/scenes/Terminal/DirectoryTree/DirectoryObjectTree.gd"
+}, {
+"base": "TerminalObject",
+"class": "FileObject",
+"language": "GDScript",
+"path": "res://src/scenes/Terminal/DirectoryTree/FileObject.gd"
+}, {
+"base": "Control",
+"class": "Terminal",
+"language": "GDScript",
+"path": "res://src/scenes/Terminal/Terminal.gd"
+}, {
+"base": "Reference",
+"class": "TerminalObject",
+"language": "GDScript",
+"path": "res://src/scenes/Terminal/DirectoryTree/TerminalObject.gd"
+} ]
+_global_script_class_icons={
+"DirectoryObject": "",
+"DirectoryObjectTree": "",
+"FileObject": "",
+"Terminal": "",
+"TerminalObject": ""
+}
+
+[application]
+
+config/name="Terminal Game"
+run/main_scene="res://src/scenes/Terminal/Terminal.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+GlobalViewport="*res://src/singletons/viewport.gd"
+Global="*res://src/singletons/global.gd"
+
+[display]
+
+window/size/width=1920
+window/size/height=1080
+window/stretch/aspect="expand"
+
+[physics]
+
+common/enable_pause_aware_picking=true
