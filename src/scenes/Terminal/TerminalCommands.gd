@@ -460,15 +460,26 @@ func mv(params: Array, flags: Array) -> void:
 			emit_signal("exception_occurred", "mv", "Cannot move: '" + params[0] + "' to a subdirectory of itself: '" + params[1] + "'")
 			return
 			
+		var new_path := ""
+		
 		if source is FileObject:
-			source.path = terminal.dir_tree.create_object_path(dest.path, source.name, source.extension)
+			new_path = terminal.dir_tree.create_object_path(dest.path, source.name, source.extension)
 			
 		else:
-			source.path = terminal.dir_tree.create_object_path(dest.path, source.name)
+			new_path = terminal.dir_tree.create_object_path(dest.path, source.name)
 			
-			if source.children.size() > 0:
-				terminal.dir_tree.update_dir_children_path(source)
+		if dest.children.size() > 0:
+			for child in dest.children:
 				
+				if child.path == new_path:
+					emit_signal("exception_occurred", "mv", "File '" + params[0] + "' exists in directory: '" + params[1] + "'")
+					return
+					
+		source.path = new_path
+		
+		if source is DirectoryObject && source.children.size() > 0:
+			terminal.dir_tree.update_dir_children_path(source)
+			
 		source.parent.children.erase(source)
 		source.parent = dest
 		dest.add_child(source)
