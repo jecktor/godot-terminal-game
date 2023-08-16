@@ -1,10 +1,10 @@
 # Note
-This is an old university project, [godot-console](https://github.com/quentincaffeino/godot-console) does everything this project does and more and it's actually maintained.
+This is an old university project, [godot-console](https://github.com/quentincaffeino/godot-console) does everything this project does and more, and it's actually maintained.
 
 # Unix-like terminal made in Godot 3.4
 This program imitates the behavior of a unix command line interface.
 
-You can perform actions over the directory tree, such as creating new directories and files, renaming them, moving them, deleting them from the tree, and more.
+You can perform actions over the emulated directory tree, such as creating new directories and files, renaming them, moving them, deleting them from the tree, and more.
 
 # Screenshots
 ![Imgur](https://i.imgur.com/jLsYzM1.png)
